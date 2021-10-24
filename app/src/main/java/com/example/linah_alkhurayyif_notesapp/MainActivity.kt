@@ -14,8 +14,13 @@ class MainActivity : AppCompatActivity() {
         note_btn.setOnClickListener { addNote() }
     }
     private fun addNote(){
-        db.addNote(Note(0, note_et.text.toString()))
-        note_et.text.clear()
-        Toast.makeText(this, "Note Added successfully!!", Toast.LENGTH_LONG).show()
+        if(note_et.text.isEmpty()){
+            Toast.makeText(this, "Error note is empty!!", Toast.LENGTH_LONG).show()
+        }else{
+            db.addNote(note_et.text.toString())
+            note_et.text.clear()
+            Toast.makeText(this, "Note Added successfully!!", Toast.LENGTH_LONG).show()
+        }
+
     }
 }
